@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_01jwob5" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <bpmn:process id="DemoZeebeProcess" name="DemoZeebeProcess" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_0f40vvq">{
+  "components": [
+    {
+      "label": "Enter name:",
+      "type": "textfield",
+      "id": "Field_0sx2alw",
+      "key": "field_name"
+    },
+    {
+      "action": "submit",
+      "label": "Save",
+      "type": "button",
+      "id": "Field_021karb",
+      "key": "field_1is0c2p"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Demo",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="start">
+      <bpmn:outgoing>Flow_099hbql</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_099hbql" sourceRef="StartEvent_1" targetRef="Activity_1thvcih" />
+    <bpmn:sequenceFlow id="Flow_0ly6icp" sourceRef="Activity_1thvcih" targetRef="Activity_089fnvw" />
+    <bpmn:endEvent id="Event_0vcs7kx" name="end">
+      <bpmn:incoming>Flow_0bzork2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0bzork2" sourceRef="Activity_089fnvw" targetRef="Event_0vcs7kx" />
+    <bpmn:userTask id="Activity_1thvcih" name="input form">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0f40vvq" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_099hbql</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ly6icp</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_089fnvw" name="log input">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="log-input" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ly6icp</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bzork2</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="DemoZeebeProcess">
+      <bpmndi:BPMNEdge id="Flow_0bzork2_di" bpmnElement="Flow_0bzork2">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="592" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ly6icp_di" bpmnElement="Flow_0ly6icp">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_099hbql_di" bpmnElement="Flow_099hbql">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="186" y="142" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vcs7kx_di" bpmnElement="Event_0vcs7kx">
+        <dc:Bounds x="592" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="601" y="142" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ls76o8_di" bpmnElement="Activity_1thvcih">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0j5zzdt_di" bpmnElement="Activity_089fnvw">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

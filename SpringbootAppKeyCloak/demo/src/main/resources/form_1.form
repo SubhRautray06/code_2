@@ -1,0 +1,26 @@
+{
+  "components": [
+    {
+      "label": "Enter name:",
+      "type": "textfield",
+      "id": "Field_0sx2alw",
+      "key": "field_name"
+    },
+    {
+      "action": "submit",
+      "label": "Save",
+      "type": "button",
+      "id": "Field_021karb",
+      "key": "field_1is0c2p"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Demo",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.0.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0"
+  },
+  "schemaVersion": 4
+}

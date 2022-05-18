@@ -1,0 +1,15 @@
+zeebe.client.broker.gateway-address: 127.0.0.1:26500
+zeebe.client.security.plaintext: true
+
+
+keycloak:
+  auth-server-url: http://localhost:18080/auth
+  realm: camunda-platform
+  resource: rest-client
+  public-client: true
+  bearer-only: true
+
+logging:
+  level:
+    org:
+      keycloak: DEBUG
