@@ -34,19 +34,11 @@ public class BuildingController {
 	
 	@ApiOperation(value = "add details of buildings")
     @PostMapping("/buildings")
-	public ResponseEntity<?> addBuilding(@RequestBody List<Building> buildings) {
+	public ResponseEntity<List<Building>> addBuilding(@RequestBody List<Building> buildings) {
 		
-		try {
 			List<Building> savedBuildings= buildingService.addBuilding(buildings);
 			return new ResponseEntity<List<Building>>(savedBuildings, HttpStatus.OK);
-		}catch (ServiceException e) {
-			ControllerException ce = new ControllerException(e.getErrorCode(),e.getErrorMessage());
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}catch (Exception e) {
-			ControllerException ce = new ControllerException("611","Something went wrong in controller");
-			return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-		}
-		
+
 	}
 	
 	@ApiOperation(value = "fetch all the details of buildings")

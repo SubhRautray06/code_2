@@ -1,36 +1,19 @@
 package com.property.demo.exceptionhandler;
 
-public class ControllerException extends RuntimeException{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String errorCode;
-	private String errorMessage;
-	public String getErrorCode() {
-		return errorCode;
-	}
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
-	}
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	public ControllerException(String errorCode, String errorMessage) {
-		super();
-		this.errorCode = errorCode;
-		this.errorMessage = errorMessage;
-	}
-	
-	public ControllerException() {
-		
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class ControllerException{
+
+
+	@ExceptionHandler(EmptyInputException.class)
+	public ResponseEntity<String> handleEmptyData(EmptyInputException emptyInputException){
+
+		return new ResponseEntity<String>(emptyInputException.getErrorMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 }

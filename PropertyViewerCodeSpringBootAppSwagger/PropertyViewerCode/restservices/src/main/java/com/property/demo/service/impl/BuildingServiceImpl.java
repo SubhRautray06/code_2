@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.property.demo.exceptionhandler.EmptyInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -78,10 +79,10 @@ public class BuildingServiceImpl implements BuildingService {
 	}
 	private void validateBuilding(Building building) {
 		if(null==building) {
-			throw new ServiceException("600","Empty details");
+			throw new EmptyInputException("600","Empty Building details");
 		}
 		if(building.getBuildingname().isEmpty()) {
-			throw new ServiceException("601","Please send building name");
+			throw new EmptyInputException("601","Please send building name");
 		}
 		if(building.getStreetname().isEmpty()) {
 			throw new ServiceException("602","Please send street name");
